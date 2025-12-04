@@ -1,7 +1,8 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import {loadEnv} from "../utils/env"
+import {loadEnv} from "./utils/env"
+import { searchRouter } from "./routes/searchRoute";
 
 loadEnv();
 
@@ -18,6 +19,7 @@ const setupAndStartServer = async () => {
   );
 
   app.use(express.json());
+  app.use("/search" , searchRouter);
 
   app.listen(port, () => {
 
