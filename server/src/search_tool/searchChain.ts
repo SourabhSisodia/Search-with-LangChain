@@ -4,6 +4,8 @@
 import { RunnableBranch, RunnableSequence } from "@langchain/core/runnables";
 import { SearchInput } from "../utils/schemas";
 import { routerStep } from "./routeStrategy";
+import { directPath } from "./directPipeline";
+import { webPath } from "./webPipeline";
 
 // web -> webPath
 // directPath
@@ -25,5 +27,5 @@ export const searchChain = RunnableSequence.from([
 ]);
 
 export async function runSearch(input: SearchInput) {
-  return await console.log(input);
+  return await searchChain.invoke(input);
 }
